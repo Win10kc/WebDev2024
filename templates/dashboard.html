@@ -1,12 +1,11 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>Chart Page</title>
+  <title>Dashboard</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
 
   <style>
     body {
@@ -24,42 +23,46 @@
 
   </style>
 </head>
-<body class="flex">
+<body class="bg-gray-100">
+  <div class="flex">
     <!-- Sidebar -->
-    <div class="w-20 bg-white h-screen flex flex-col items-center py-4">
-      <div class="mb-8">
-          <i class="fas fa-user-circle text-3xl text-orange-500"></i>
-      </div>
-      <div class="flex flex-col space-y-8">
-          <a href="home.html">
-              <i id="home-icon" class="fas fa-home text-xl hover:text-orange-500 cursor-pointer transition"></i>
-          </a>
-          <a href="chart.html">
-              <i id="chart-icon" class="fas fa-chart-line text-xl text-gray-400 text-orange-500 cursor-pointer transition"></i>
-          </a>
-          <a href="dumbbell.html">
-            <i id="dumbbell-icon" class="fas fa-dumbbell text-xl text-gray-400 hover:text-orange-500 cursor-pointer transition"></i>
-          </a>
-          <a href="utensils.html">
-            <i id="utensils-icon" class="fas fa-utensils text-xl text-gray-400 hover:text-orange-500 cursor-pointer transition"></i>
-          </a>
-          <a href="settings.html">
-            <i id="settings-icon" class="fas fa-cog text-xl text-gray-400 hover:text-orange-500 cursor-pointer transition"></i>
-          </a>
-          <a href="logout.html"></a>
-            <i id="logout-icon" class="fas fa-sign-out-alt text-gray-400 hover:text-orange-500 cursor-pointer transition"></i>
-          </a>
-      </div>
-    </div>
+<div class="w-20 bg-white h-screen flex flex-col items-center py-4">
+  <div class="mb-8">
+      <i class="fas fa-user-circle text-3xl text-green-500"></i>
+  </div>
+  <div class="flex flex-col space-y-8">
+      <a href="{{ url_for('dashboard') }}">
+          <i id="home-icon" class="fas fa-home text-xl text-green-500 cursor-pointer transition"></i>
+      </a>
+      <a href="{{ url_for('chart') }}">
+          <i id="chart-icon" class="fas fa-chart-line text-xl text-gray-400 hover:text-green-500 cursor-pointer transition"></i>
+      </a>
+      <a href="{{ url_for('dumbbell') }}">
+        <i id="dumbbell-icon" class="fas fa-dumbbell text-xl text-gray-400 hover:text-green-500 cursor-pointer transition"></i>
+      </a>
+
+      <a href="{{ url_for('utensils') }}">
+        <i id="utensils-icon" class="fas fa-utensils text-xl text-gray-400 hover:text-green-500 cursor-pointer transition"></i>
+      </a>
+      <a href="{{ url_for('settings') }}">
+        <i id="settings-icon" class="fas fa-cog text-xl text-gray-400 hover:text-green-500 cursor-pointer transition"></i>
+      </a>
+      <a href="{{ url_for('logout') }}">
+        <i id="logout-icon" class="fas fa-sign-out-alt text-gray-400 hover:text-green-500 cursor-pointer transition"></i>
+      </a>
+
+  </div>
+</div>
+
 
     <!-- Main Content -->
     <div class="flex-1 p-6">
-      <!-- Home Tab -->
-      <div id="home-tab" class="tab-content">
+      <!-- dashboard Tab -->
+      <div id="dashboard-tab" class="tab-content">
         <div class="flex justify-between items-center mb-6">
           <div>
             <p class="text-gray-500">Good Morning</p>
-            <h1 class="text-2xl font-bold">Welcome Back <span>🎉</span></h1>
+            <h1 class="text-2xl font-bold">Welcome Back {{ username }} <span>🎉</span></h1>
           </div>
         </div>
         <div class="grid grid-cols-4 gap-6 mb-6">
@@ -75,8 +78,8 @@
           <!-- Water Card -->
           <div class="bg-white p-4 rounded-lg shadow">
             <div class="flex items-center space-x-2 mb-4">
-              <i class="fas fa-tint text-2xl text-orange-500"></i>
-              <p class="text-orange-500 font-semibold">Water</p>
+              <i class="fas fa-tint text-2xl text-blue-500"></i>
+              <p class="text-blue-500 font-semibold">Water</p>
             </div>
             <h2 class="text-3xl font-bold">1.25 <span class="text-lg">Liters</span></h2>
           </div>
@@ -126,8 +129,8 @@
               </div>
               <div class="flex flex-col items-center">
                 <p class="text-gray-500">Fri</p>
-                <div class="w-6 h-32 bg-orange-500 rounded"></div>
-                <p class="text-orange-500 font-semibold">50%</p>
+                <div class="w-6 h-32 bg-green-500 rounded"></div>
+                <p class="text-green-500 font-semibold">50%</p>
               </div>
               <div class="flex flex-col items-center">
                 <p class="text-gray-500">Sat</p>
@@ -299,8 +302,7 @@
     <div class="flex items-center space-x-4 mb-6">
       <img alt="User profile" class="w-12 h-12 rounded-full" height="50" src="https://storage.googleapis.com/a1aa/image/dWCHnk3QZUZnNNtrpAwLBu8kawHV7SXlYUXK1QirfMpAOVxJA.jpg" width="50"/>
       <div>
-        <p class="font-semibold">Thomas Fletcher</p>
-        <p class="text-gray-500">Sydney, Australia</p>
+        <p class="font-semibold">{{ username }} </p>
       </div>
     </div>
     <div class="mb-6">
@@ -371,8 +373,26 @@
       </div>
     </div>
   </div>
-  
-    
+
+  </div>
+
+  <script>
+    // Navigation functionality
+    document.querySelectorAll('.tab-content').forEach(tab => tab.classList.add('hidden')); // Hide all tabs
+    document.getElementById('dashboard-tab').classList.remove('hidden'); // Show the dashboard tab by default
+
+    function showTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.add('hidden')); // Hide all tabs
+      document.getElementById(tabId).classList.remove('hidden'); // Show the selected tab
+    }
+
+    // Event listeners for icons
+    document.getElementById('dashboard-icon').addEventListener('click', () => showTab('dashboard-tab'));
+    document.getElementById('chart-icon').addEventListener('click', () => showTab('chart-tab'));
+    document.getElementById('dumbbell-icon').addEventListener('click', () => showTab('dumbbell-tab'));
+    document.getElementById('utensils-icon').addEventListener('click', () => showTab('utensils-tab'));
+    document.getElementById('settings-icon').addEventListener('click', () => showTab('settings-tab'));
+    document.getElementById('logout-icon').addEventListener('click', () => showTab('logout-tab'));
+  </script>
 </body>
 </html>
-
