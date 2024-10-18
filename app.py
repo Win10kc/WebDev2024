@@ -147,27 +147,32 @@ def dashboard():
 # Chart page route
 @app.route('/chart')
 def chart():
-    return render_template('chart.html')
+    return render_template('chart.html', username=session['user'])
 
 # Train Guide (Dumbbell) page route
 @app.route('/dumbbell')
 def dumbbell():
-    return render_template('dumbbell.html')
+    return render_template('dumbbell.html', username=session['user'])
 
 # Food Care (Utensils) page route
 @app.route('/utensils')
 def utensils():
-    return render_template('utensils.html')
+    return render_template('utensils.html', username=session['user'])
 
 # Settings page route
 @app.route('/settings')
 def settings():
     return render_template('settings.html')
-  
-
-
+def changename():
+    if request.method == 'POST':
+        new_username = request.form['username']
+        session['username'] = new_username 
+        flash('Username updated successfully', 'success')
+        return redirect(url_for('dashboard'))
+    
+    
 @app.route('/logout')
-def logout():
+def logout():    
     session.pop('user', None)  # Xóa thông tin người dùng khỏi session
     flash('You have been logged out.')  # Thông báo đăng xuất
     return redirect(url_for('index'))  # Chuyển hướng về trang index
